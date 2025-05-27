@@ -7,18 +7,42 @@ import PlugComponent from "../view/plug-component.js";
 
 export default class TasksBoardPresenter {
     #taskDeskComponent = new DeskComponent();
+    #clearButtonComponent = null;
     #boardContainer = null;
     #boardtasks = [];
-
     #tasksModel = null;
 
-    constructor({boardContainer, tasksModel}) {
+    constructor({boardContainer, tasksModel, clearButtonComponent}) {
         this.#boardContainer = boardContainer;
         this.#tasksModel = tasksModel;
+
+        this.#clearButtonComponent = clearButtonComponent;
+        this.#tasksModel.addObserver(this.#handleModelChange.bind(this));
     }
 
     init() {
-        this.#boardtasks = [...this.#tasksModel.tasks];
+        this.#renderBoard();
+    }
+
+    createTask() {
+        const taskTitle = document.querySelector('.add-new').value.trim();
+        if (!taskTitle) {
+            return;
+        }
+
+        this.#tasksModel.addTask(taskTitle);
+
+        document.querySelector('.add-new').value = '';
+    }
+
+    clearBasket() {
+        this.#tasksModel.removeBasketTask();
+    }
+
+    #renderBoard() {
+        if (this.#tasksModel.tasks.length !== this.#boardtasks.length) {
+            this.#boardtasks = [...this.#tasksModel.tasks];
+        }
 
         render(this.#taskDeskComponent, this.#boardContainer);
 
@@ -41,7 +65,7 @@ export default class TasksBoardPresenter {
         console.log(tasks.length)
 
         tasks.length === 0 ? this.#renderPlugComponent(list) : tasks.forEach((task) => {
-            this.#renderTask(task, list);
+            this.#renderTask(task.name, list);
         });
     }
 
@@ -51,11 +75,20 @@ export default class TasksBoardPresenter {
         const basketTasks = basketContainer?.querySelector('li');
 
         if (basketContainer && basketTasks) {
-            render(new ClearButtonComponent(), basketContainer);
+            render(this.#clearButtonComponent, basketContainer);
         }
     }
 
     #renderPlugComponent(container) {
         render(new PlugComponent(), container.element);
+    }
+
+    #clearBoard() {
+        this.#taskDeskComponent.element.innerHTML = '';
+    }
+
+    #handleModelChange() {
+        this.#clearBoard();
+        this.#renderBoard();
     }
 }

@@ -1,20 +1,57 @@
 import { Status } from "../../const.js";
+import { generateID } from "../utils.js";
 
 export const tasks = [
     {
         status: Status.BACKLOG,
-        tasks: ["Записаться в спортзал", "Купить новый ноутбук", "Спланировать отпуск"]
+        tasks: [
+            {
+                id: generateID(),
+                name: "уник"
+            },
+            {
+                id: generateID(),
+                name: "машина"
+            },
+            {
+                id: generateID(),
+                name: "дом"
+            }
+        ]
     },
     {
         status: Status.PROCESSING,
-        tasks: ["Прочитать книгу по алгоритмам", "Разобраться с TypeScript", "Написать Telegram-бота"]
+        tasks: [
+            {
+                id: generateID(),
+                name: "зал"
+            },
+            {
+                id: generateID(),
+                name: "помыть тачку"
+            },
+            {
+                id: generateID(),
+                name: "уборка"
+            }
+        ]
     },
     {
         status: Status.DONE,
-        tasks: ["Создать API на Spring Boot", "Настроить CI/CD для проекта"]
+        tasks: [
+        ]
     },
     {
         status: Status.BASKET,
-        tasks: ["Переписать код с jQuery на чистый JavaScript", "Удалить старые зависимости", "Перенести проект на новую версию Node.js"]
+        tasks: [
+            {
+                id: generateID(),
+                name: "поспать"
+            },
+            {
+                id: generateID(),
+                name: "воскреснуть"
+            }
+        ]
     }
 ];
