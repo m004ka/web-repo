@@ -1,0 +1,186 @@
+:root {
+    --default-corner-radius: 10px;
+    --default-font-size: 15px;
+
+    --color-text-light: #e4e1e1;
+    --color-text-dark: #000;
+    --color-white: #ffffff;
+
+    --color-header-bg: #2f80ed;
+    --color-button-hover: #0056b3;
+
+    --color-clear-btn: #c9666c;
+    --color-clear-btn-hover: #b3464d;
+
+    --color-backlog: #e3e3e3;
+    --color-processing: #d6e7ff;
+    --color-done: #d7f9e0;
+    --color-basket: #fbe3e3;
+
+    --color-backlog-text: #8e9092;
+    --color-processing-text: #5c9bf2;
+    --color-done-text: #8acea0;
+    --color-basket-text: #da8e8b;
+
+    --stub-border: #68727b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: none;
+}
+
+body {
+    background-color: #eef4fb;
+}
+
+main {
+    padding: 23px 28px;
+}
+
+header {
+    background-color: var(--color-header-bg);
+}
+
+header h1 {
+    color: var(--color-white);
+    padding: 25px 35px;
+}
+
+.add-new-task {
+    background: var(--color-white);
+    border-radius: var(--default-corner-radius);
+    padding: 20px;
+    width: fit-content;
+}
+
+.add-new-task h1 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.add-new-task .bottom-group {
+    display: flex;
+    gap: 20px;
+}
+
+.add-new-task input[type="text"] {
+    padding: 10px;
+    font-size: var(--default-font-size);
+    border: 1px solid var(--color-text-light);
+    border-radius: var(--default-corner-radius);
+    outline: none;
+    background-color: var(--color-white);
+    color: var(--color-text-light);
+}
+
+.add-new-task input[type="text"]::placeholder {
+    color: var(--color-text-light);
+    font-size: var(--default-font-size);
+}
+
+.add-new-task button {
+    padding: 13px 40px;
+    font-size: var(--default-font-size);
+    font-weight: bold;
+    border: none;
+    border-radius: var(--default-corner-radius);
+    cursor: pointer;
+    background-color: var(--color-header-bg);
+    color: var(--color-white);
+}
+
+.add-new-task button:hover {
+    background-color: var(--color-button-hover);
+}
+
+.desk-tasks {
+    margin-top: 35px;
+    display: flex;
+    column-gap: 50px;
+}
+
+.display-tasks {
+    flex: 1;
+}
+
+.display-tasks h3 {
+    background-color: var(--color-backlog);
+    color: #68727b;
+    padding: 10px 15px;
+    border-radius: var(--default-corner-radius);
+    margin-bottom: 20px;
+    font-weight: 500;
+    width: fit-content;
+}
+
+.display-tasks li {
+    list-style: none;
+    font-weight: 500;
+    font-size: var(--default-font-size);
+    padding: 20px;
+    color: var(--color-text-dark);
+    background-color: var(--color-white);
+    border-left: 6px solid var(--color-backlog);
+    border-radius: var(--default-corner-radius);
+    margin: 10px 0;
+}
+
+.stub {
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='10' ry='10' stroke='%2368727bFF' stroke-width='1' stroke-dasharray='6' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+    border-radius: var(--default-corner-radius);
+    color: var(--stub-border);
+    font-weight: 500;
+    padding: 20px;
+}
+
+.clear-button {
+    width: 100%;
+    padding: 15px 0;
+    font-size: var(--default-font-size);
+    font-weight: bold;
+    color: var(--color-white);
+    background-color: var(--color-clear-btn);
+    border: none;
+    border-radius: var(--default-corner-radius);
+}
+
+.clear-button:hover {
+    background-color: var(--color-clear-btn-hover);
+}
+
+/* Column-specific styles */
+.backlog h3 {
+    background-color: var(--color-backlog);
+    color: var(--color-backlog-text);
+}
+.backlog li {
+    border-left-color: var(--color-backlog);
+}
+
+.processing h3 {
+    background-color: var(--color-processing);
+    color: var(--color-processing-text);
+}
+.processing li {
+    border-left-color: var(--color-processing);
+}
+
+.done h3 {
+    background-color: var(--color-done);
+    color: var(--color-done-text);
+}
+.done li {
+    border-left-color: var(--color-done);
+}
+
+.basket h3 {
+    background-color: var(--color-basket);
+    color: var(--color-basket-text);
+}
+.basket li {
+    border-left-color: var(--color-basket);
+}
