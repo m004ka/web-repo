@@ -7,38 +7,33 @@ export const tasks = [
         tasks: [
             {
                 id: generateID(),
-                name: "уник"
+                name: "Воскреснуть"
             },
             {
                 id: generateID(),
-                name: "машина"
+                name: "похавать"
             },
             {
                 id: generateID(),
-                name: "дом"
+                name: "попить "
             }
         ]
     },
     {
         status: Status.PROCESSING,
-        tasks: [
-            {
-                id: generateID(),
-                name: "зал"
-            },
-            {
-                id: generateID(),
-                name: "помыть тачку"
-            },
-            {
-                id: generateID(),
-                name: "уборка"
-            }
-        ]
+        tasks: []
     },
     {
         status: Status.DONE,
         tasks: [
+            {
+                id: generateID(),
+                name: "стать дьяволом"
+            },
+            {
+                id: generateID(),
+                name: "купить старую бмв"
+            }
         ]
     },
     {
@@ -46,12 +41,20 @@ export const tasks = [
         tasks: [
             {
                 id: generateID(),
-                name: "поспать"
+                name: "продать старую бмв"
             },
             {
                 id: generateID(),
-                name: "воскреснуть"
+                name: "починить бмв"
+            },
+            {
+                id: generateID(),
+                name: "помыть бмв"
+            },
+            {
+                id: generateID(),
+                name: "разбить бмв"
             }
         ]
     }
-];
+]

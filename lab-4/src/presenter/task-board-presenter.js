@@ -54,18 +54,18 @@ export default class TasksBoardPresenter {
     }
 
     #renderTask(task, container) {
-        render(new TaskComponent(task), container.element.querySelector('.task-container'));
+        render(new TaskComponent(task), container.element.querySelector('ul'));
     }
 
     #renderTaskList(status, tasks) {
-        const list = new TasksListComponent(status);
+        const list = new TasksListComponent(status, this.#handleTaskDrop.bind(this));
 
         render(list, this.#taskDeskComponent.element);
 
         console.log(tasks.length)
 
         tasks.length === 0 ? this.#renderPlugComponent(list) : tasks.forEach((task) => {
-            this.#renderTask(task.name, list);
+            this.#renderTask(task, list);
         });
     }
 
@@ -90,5 +90,9 @@ export default class TasksBoardPresenter {
     #handleModelChange() {
         this.#clearBoard();
         this.#renderBoard();
+    }
+
+    #handleTaskDrop(newStatus, taskId, droppedTask) {
+        this.#tasksModel.updateTaskStatus(newStatus, taskId, droppedTask);
     }
 }
